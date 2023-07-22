@@ -6,8 +6,9 @@
 			>	of escorts, including some Obish ships.
 
 """
+file = input('Nombre de archivo a almacenar información:    ')
 
-
+f = open(file, "w")
 
 texto = input('Ingrese String a transformar:    ')
 
@@ -36,9 +37,14 @@ while len(texto) > 0:
     else:
         for line in range(len(texto)):
             cadena = cadena + texto.pop(0) + ' '
+    
+    cadena = cadena + '\n'
     print(cadena)
     lineas.append(cadena)
     cadena = ''
 
+    print(lineas)
 
+f.writelines(lineas)
+f.close
 
