@@ -1,50 +1,60 @@
-"""
-
-			>	^Pish/carrier^We've brought in a carrier of our own, the ISN 2020187. It
-			>	should be able to successfully engage the Constant Voice. However, if
-			>	2020187 is destroyed, the mission will be aborted. It has its own group
-			>	of escorts, including some Obish ships.
-
-"""
-file = input('Nombre de archivo a almacenar información:    ')
-
-f = open(file, "w")
-
-texto = input('Ingrese String a transformar:    ')
-
-texto = texto.split()
-
-N_tabs = int(input('Ingrese cantidad de identación:   '))
-
-lineas = []
-
-cadena = ''
-
-identation = ''
-
-for tab in range(N_tabs):
-    identation = identation + '\t'
-
-identation = identation + '>' + '\t'
 
 
 
-while len(texto) > 0:
-    cadena = identation
-    if len(texto) > 11:
-        for line in range(11):
-            cadena =  cadena + texto.pop(0) + ' '
-    else:
-        for line in range(len(texto)):
-            cadena = cadena + texto.pop(0) + ' '
-    
-    cadena = cadena + '\n'
-    print(cadena)
-    lineas.append(cadena)
+
+def select_file():
+    file = input('Nombre de archivo a almacenar información:    ')
+    return file
+
+
+def text_input():
+    texto = input('Ingrese String a transformar:    ')
+    texto = texto.split()
+    return texto
+
+def tabs_input():
+    N_tabs = int(input('Ingrese cantidad de identación:   '))
+    return N_tabs
+
+
+def identacion(tabs):
+    identation = ''
+    for tab in range(tabs):
+        identation = identation + '\t'
+
+    identation = identation + '>' + '\t'
+    return identation
+
+def cargar_texto(texto,tabs):
     cadena = ''
+    lineas = []
+    while len(texto) > 0:
+        cadena = identacion(tabs)
+        if len(texto) > 11:
+            for line in range(11):
+                cadena =  cadena + texto.pop(0) + ' '
+        else:
+            for line in range(len(texto)):
+                cadena = cadena + texto.pop(0) + ' '
+        
+        cadena = cadena + '\n'
+        print(cadena)
+        lineas.append(cadena)
+        cadena = ''
 
-    print(lineas)
+        print(lineas)
+    return lineas
 
-f.writelines(lineas)
-f.close
+def grabar_archivo(f,lineas):
+    f = open(f, "w")
+    f.writelines(lineas)
+    f.close
 
+while True:
+    file = select_file()
+    texto = text_input()
+    tabs = tabs_input()
+    grabar_archivo(file,cargar_texto(texto,tabs))
+
+
+    

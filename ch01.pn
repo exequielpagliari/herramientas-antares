@@ -119,8 +119,8 @@ conditions:
 				player:  0
 				next:    "tut2"
 				text:
-					>	Has destruido los cinco transportes Gaitori, impidiendo que llegaran 
-					>	refuerzos a la base Gaitori.
+					>   Has destruido los cinco transportes Gaitori, impidiendo que llegaran 
+					>   refuerzos a la base Gaitori.
 briefings:
 	*	title:  "Sistema Charon"
 		content:
