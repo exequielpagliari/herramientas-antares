@@ -4,7 +4,15 @@ def select_file():
     return file
 
 def grabar_archivo(f,lineas):
-    file = open(f, "r")
+
+    try:
+        file = open(f, "r")
+        
+    except FileNotFoundError:
+        file = open(f, "w")
+        file = open(f,'r')
+
+
     old_data = file.readlines()
     new_data = old_data + lineas
 
